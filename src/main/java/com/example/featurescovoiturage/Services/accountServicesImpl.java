@@ -1,5 +1,6 @@
 package com.example.featurescovoiturage.Services;
 
+import com.example.featurescovoiturage.DTO.UserFormData;
 import com.example.featurescovoiturage.Entities.User;
 import com.example.featurescovoiturage.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,25 @@ public class accountServicesImpl implements accountServices {
     @Autowired
     private UserRepository userRepository;
     @Override
-    public void saveUser(User user) {
-        //makin sure process for later
-        user.setCarRegConfirmed(false);
-        user.setCarRegConfirmed(false);
+    public boolean saveUser(UserFormData user) {
 
-        userRepository.save(user);
+        System.out.println("cin is "+user.getCni());
+        User isExist=userRepository.findUserByEmail(user.getEmail());
+        if(isExist!=null)
+            return false;
+        isExist=new User();
+        isExist.setEmail(user.getEmail());
+        isExist.setPassword(user.getPassword());
+        isExist.setFirstName(user.getFirstname());
+        isExist.setLastName(user.getLastname());
+        isExist.setCIN(user.getCni());
+        isExist.setEmailVerified(false);
+        isExist.setPhoneNumberVerified(false);
+        isExist.setCarRegConfirmed(false);
+        isExist.setCarRegConfirmed(false);
+
+        userRepository.save(isExist);
+        return true;
     }
 
     @Override
@@ -49,4 +63,16 @@ public class accountServicesImpl implements accountServices {
         }
 
     }
+
+
+
+    @Override
+    public User findUserByEmail(UserFormData userFormData) {
+        User user=userRepository.findUserByEmail(userFormData.getEmail());
+        System.out.println(user.getEmail()+" "+user.getPassword()+" "+ userFormData.getPassword()+" "+user.getPassword().equals(userFormData.getPassword()));
+        if(user.getPassword().equals(userFormData.getPassword()))
+            return user;
+        return null;
+    }
+
 }

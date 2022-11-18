@@ -18,11 +18,15 @@ public class User {
     private Long id;
     private String email;
     private String firstName;
-    private String pw;
+    private String CIN;
+    private byte verificationStep;
+    private boolean isEmailVerified;
+    private String phoneNumber;
+    private boolean isPhoneNumberVerified;
+    private String password;
     private String lastName;
-    private boolean personalIdConfirmed;
-    private boolean carRegConfirmed;
-
+    private boolean personalIdConfirmed;//to be replaced by verifStep service/controller layer
+    private boolean carRegConfirmed;//to be replaced by verifStep service/controller layer
     @Lob
     @Nullable
     @Column(length = 20971520)
@@ -31,4 +35,8 @@ public class User {
     @Nullable
     @Column(length = 20971520)
     private byte[] carReg;
+    @Lob
+    @Nullable
+    @Column(length = 20971520)
+    private byte[] profilePic;
 }
