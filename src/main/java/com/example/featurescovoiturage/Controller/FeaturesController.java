@@ -1,15 +1,21 @@
 package com.example.featurescovoiturage.Controller;
 
+import com.example.featurescovoiturage.DTO.MobFile;
 import com.example.featurescovoiturage.DTO.UserFormData;
 import com.example.featurescovoiturage.Entities.User;
 import com.example.featurescovoiturage.Services.accountServices;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import java.util.Base64;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.File;
 
 @RestController
 @RequestMapping("api/account")
@@ -37,6 +43,14 @@ public class FeaturesController {
         accountServices.saveUserPersonalId(personalIdDocument,userid);
 
     }
+    @PostMapping("mob/personalId/upload")
+    public void personalIdUpload(@RequestBody MobFile mobFile) throws Exception {
+        byte[] buf = Base64.getDecoder().decode(mobFile.getPersonalid());
+        System.out.println(buf);
+        accountServices.saveUserMobPersonalId(buf,mobFile.getUserid());
+
+    }
+
     @PostMapping("carregistration/upload")
     public void carRegistration(@RequestParam("carreg") MultipartFile carRegistrationDocument, @RequestParam("userid") Long userid) throws Exception {
        accountServices.saveUserCarRegistration(carRegistrationDocument,userid);

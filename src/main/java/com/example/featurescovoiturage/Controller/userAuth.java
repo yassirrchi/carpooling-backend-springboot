@@ -5,16 +5,14 @@ import com.example.featurescovoiturage.Entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.featurescovoiturage.Services.accountServices;
 import org.springframework.http.ResponseEntity.*;
 
 //temp // spring security
 @RestController
 @RequestMapping("api/auth")
+@CrossOrigin(origins = "*")
 public class userAuth {
     @Autowired
     private accountServices accountServicesO;

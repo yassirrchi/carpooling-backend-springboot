@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface accountServices {
     boolean saveUser(UserFormData user);
     void saveUserPersonalId(MultipartFile idDocument,Long id) throws Exception;
+    void saveUserMobPersonalId(byte[] idDocument,Long id) throws Exception;
     void saveUserCarRegistration(MultipartFile carRegDocument,Long id) throws Exception;
 
     User findUserByEmail(UserFormData userFormData);

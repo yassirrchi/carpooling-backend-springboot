@@ -50,6 +50,18 @@ public class accountServicesImpl implements accountServices {
         }
 
     }
+    @Override
+    public void saveUserMobPersonalId(byte[] idDocument, Long id) throws Exception {
+        User user=userRepository.findById(id).orElse(null);
+        if(user==null){
+            throw new Exception("user not found");
+        }else{
+            user.setPersonalIdCard(idDocument);
+            userRepository.save(user);
+
+        }
+
+    }
 
     @Override
     public void saveUserCarRegistration(MultipartFile carRegDocument, Long id) throws Exception {
@@ -63,6 +75,7 @@ public class accountServicesImpl implements accountServices {
         }
 
     }
+
 
 
 
