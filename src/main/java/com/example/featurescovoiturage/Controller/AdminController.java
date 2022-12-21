@@ -21,6 +21,12 @@ public class AdminController {
         adminServices.verifyUserIdentity(userDataAndDoc);
 
     }
+    @PutMapping("offer/approve")
+    public void offerApprove() throws Exception {
+
+
+    }
+
 
 
 
