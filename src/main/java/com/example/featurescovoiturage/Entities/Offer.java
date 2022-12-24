@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +20,10 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String destination;
-    private Date startDate;
-    private Date expectedArrival;
+    private String depart;
+    private String arrival;
+    private LocalDate startDate;
+    private LocalDate expectedArrival;
     @OneToMany
     private List<User> passengers;
     @OneToOne

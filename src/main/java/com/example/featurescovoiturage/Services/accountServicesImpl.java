@@ -1,7 +1,9 @@
 package com.example.featurescovoiturage.Services;
 
+import com.example.featurescovoiturage.DTO.AddCarToUser;
 import com.example.featurescovoiturage.DTO.UserFormData;
 import com.example.featurescovoiturage.Entities.User;
+import com.example.featurescovoiturage.Entities.Voiture;
 import com.example.featurescovoiturage.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +88,25 @@ public class accountServicesImpl implements accountServices {
         if(user.getPassword().equals(userFormData.getPassword()))
             return user;
         return null;
+    }
+
+    @Override
+    public boolean addCarToUser(AddCarToUser car) {
+        Voiture voiture=new Voiture();
+        User user=userRepository.findById(car.getUserid()).orElse(null);
+        if(user==null)
+            return false;
+
+        voiture.setModel(car.getModel());
+        voiture.setBrand(car.getBrand());
+        voiture.setCapacity(car.getCapacity());
+        user.setVoiture(voiture);
+        userRepository.save(user);
+        return true;
+
+
+
+
     }
 
 }

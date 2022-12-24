@@ -1,5 +1,6 @@
 package com.example.featurescovoiturage.Controller;
 
+import com.example.featurescovoiturage.DTO.AddCarToUser;
 import com.example.featurescovoiturage.DTO.MobFile;
 import com.example.featurescovoiturage.DTO.UserFormData;
 import com.example.featurescovoiturage.Entities.User;
@@ -56,6 +57,28 @@ public class FeaturesController {
        accountServices.saveUserCarRegistration(carRegistrationDocument,userid);
 
     }
+    @PostMapping("add/car")
+    /*
+    Post localhost:4500/api/account/add/car
+
+     {
+    "userid": 2,
+    "model":"hps",
+    "brand":"olabola",
+    "capacity":4
+}
+* */
+    public ResponseEntity<?> addCarToUser(@RequestBody AddCarToUser car){
+
+        if(accountServices.addCarToUser(car))
+            return ResponseEntity.ok().build();
+        else
+            return ResponseEntity.internalServerError().build();
+
+
+
+    }
+
 
 
 

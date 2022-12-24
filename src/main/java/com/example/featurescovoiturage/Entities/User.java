@@ -25,7 +25,7 @@ public class User {
     private boolean isPhoneNumberVerified;
     private String password;
     private String lastName;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Voiture voiture;
     private boolean personalIdConfirmed;//to be replaced by verifStep service/controller layer
     private boolean carRegConfirmed;//to be replaced by verifStep service/controller layer
