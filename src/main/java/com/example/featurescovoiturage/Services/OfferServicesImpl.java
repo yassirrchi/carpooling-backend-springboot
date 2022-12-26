@@ -42,6 +42,8 @@ public class OfferServicesImpl implements OfferServices {
 
     @Override
     public List<Offer> getOfferByDateAndDepartAndArrival(LocalDate localDate, String depart, String arrival) {
-        return offerRepository.findByStartDateGreaterThanEqualAndAndDepartEqualsAndAndArrivalEquals(localDate,depart,arrival);
+       // return offerRepository.findByStartDateGreaterThanEqualAndAndDepartEqualsAndAndArrivalEquals(localDate,depart,arrival);
+        return offerRepository.findByStartDateEquals(localDate);
+
     }
 }

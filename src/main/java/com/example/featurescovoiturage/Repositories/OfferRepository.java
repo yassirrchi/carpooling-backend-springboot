@@ -14,6 +14,8 @@ public interface OfferRepository extends JpaRepository<Offer,Long> {
 
     List<Offer> findByStartDateGreaterThanEqualAndAndDepartEqualsAndAndArrivalEquals(LocalDate localDate,String depart,String arrival);
 
+    List<Offer> findByStartDateEquals(LocalDate localDate);
+
 
 
 
