@@ -41,6 +41,19 @@ public class accountServicesImpl implements accountServices {
     }
 
     @Override
+    public void saveUserMobCar(byte[] idDocument, Long id) throws Exception {
+        User user=userRepository.findById(id).orElse(null);
+        if(user==null){
+            throw new Exception("user not found");
+        }else{
+            user.setCarReg(idDocument);
+            userRepository.save(user);
+
+        }
+
+    }
+
+    @Override
     public void saveUserPersonalId(MultipartFile idDocument, Long id) throws Exception {
         User user=userRepository.findById(id).orElse(null);
         if(user==null){
@@ -81,6 +94,7 @@ public class accountServicesImpl implements accountServices {
 
 
 
+
     @Override
     public User findUserByEmail(UserFormData userFormData) {
         User user=userRepository.findUserByEmail(userFormData.getEmail());
@@ -99,6 +113,8 @@ public class accountServicesImpl implements accountServices {
 
         voiture.setModel(car.getModel());
         voiture.setBrand(car.getBrand());
+        voiture.setNum_ero(car.getNum_ero());
+        voiture.setNum_ero(car.getNum_ero());
         voiture.setCapacity(car.getCapacity());
         user.setVoiture(voiture);
         userRepository.save(user);

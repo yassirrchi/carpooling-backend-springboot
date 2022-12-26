@@ -51,6 +51,13 @@ public class FeaturesController {
         accountServices.saveUserMobPersonalId(buf,mobFile.getUserid());
 
     }
+    @PostMapping("mob/carregistration/upload")
+    public void carRegistration(@RequestBody MobFile mobFile) throws Exception {
+        byte[] buf = Base64.getDecoder().decode(mobFile.getPersonalid());
+        System.out.println(buf);
+        accountServices.saveUserMobCar(buf,mobFile.getUserid());
+
+    }
 
     @PostMapping("carregistration/upload")
     public void carRegistration(@RequestParam("carreg") MultipartFile carRegistrationDocument, @RequestParam("userid") Long userid) throws Exception {

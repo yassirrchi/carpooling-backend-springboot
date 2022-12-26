@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.featurescovoiturage.Services.accountServices;
 @RestController
 @RequestMapping("api/admin")
+@CrossOrigin(origins = "*")
 public class AdminController {
     @Autowired
     private AdminServices adminServices;

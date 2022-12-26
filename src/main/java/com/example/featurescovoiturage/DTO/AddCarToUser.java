@@ -12,5 +12,6 @@ public class AddCarToUser {
     private Long userid;
     private String brand;
     private String model;
+    private String num_ero;
     private byte capacity;
 }

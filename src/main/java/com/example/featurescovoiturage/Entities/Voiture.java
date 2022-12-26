@@ -19,6 +19,7 @@ public class Voiture {
     private Long id;
     private String brand;
     private String model;
+    private String num_ero;
     @JsonIgnore
     @OneToOne(mappedBy = "voiture")
     private User owner;

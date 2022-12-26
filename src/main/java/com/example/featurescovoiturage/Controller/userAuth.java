@@ -27,9 +27,10 @@ public class userAuth {
     @PostMapping("user/signup")
     public ResponseEntity<?> signup(@RequestBody UserFormData user){
         if(accountServicesO.saveUser(user))
-            return ResponseEntity.status(200).build();
-        return ResponseEntity.status(403).build();
-
+        {User userToExist= accountServicesO.findUserByEmail(user);
+         return ResponseEntity.ok(userToExist);
+        }
+        else return ResponseEntity.status(401).build();
 
     }
 

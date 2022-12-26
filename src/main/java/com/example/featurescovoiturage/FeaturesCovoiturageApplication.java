@@ -31,6 +31,7 @@ public class FeaturesCovoiturageApplication {
         Voiture voiture=new Voiture();
         voiture.setBrand("toyoya");
         voiture.setCapacity((byte) 2);
+        voiture.setNum_ero("33E33");
         voiture.setModel("camry");
         user.setVoiture(voiture);
 

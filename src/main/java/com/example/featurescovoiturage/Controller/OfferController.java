@@ -19,6 +19,7 @@ package com.example.featurescovoiturage.Controller;
 @RequestMapping("api/offers")
 @AllArgsConstructor
 @NoArgsConstructor
+@CrossOrigin(origins = "*")
 public class OfferController {
     @Autowired
     private OfferServices offerServices;

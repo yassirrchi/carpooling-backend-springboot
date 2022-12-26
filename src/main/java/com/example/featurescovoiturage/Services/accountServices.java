@@ -9,10 +9,12 @@ public interface accountServices {
     boolean saveUser(UserFormData user);
     void saveUserPersonalId(MultipartFile idDocument,Long id) throws Exception;
     void saveUserMobPersonalId(byte[] idDocument,Long id) throws Exception;
+    void saveUserMobCar(byte[] idDocument,Long id) throws Exception;
     void saveUserCarRegistration(MultipartFile carRegDocument,Long id) throws Exception;
 
     User findUserByEmail(UserFormData userFormData);
     boolean addCarToUser(AddCarToUser car);
+
 
 
 }

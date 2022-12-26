@@ -24,6 +24,11 @@ public class Offer {
     private String arrival;
     private LocalDate startDate;
     private LocalDate expectedArrival;
+    private String arrival_time;
+    private String price;
+    private String city_adr;
+    private String depart_time;
+    private String description;
     @OneToMany
     private List<User> passengers;
     @OneToOne
